@@ -7,3 +7,6 @@ def home(request):
 
 def about(request):
     return render(request, 'fareflex/about.html')
+
+def wallet(request):
+    return render(request, 'fareflex/wallet.html')
