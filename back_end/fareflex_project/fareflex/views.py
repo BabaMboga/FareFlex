@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 # Create your views here.
 def home(request):
-    return HttpResponse('<h1> fareflex-home </h1>')
+    return render(request, 'fareflex/home.html')
 
 def about(request):
-    return HttpResponse('<h1> fareflex-about </h1>')
+    return render(request, 'fareflex/about.html')
