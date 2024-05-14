@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 
 
 class Wallet(models.Model):
-    wallet_id = models.CharField(max_length=255)
-    label = models.CharField(max_length=255)
+    wallet_id = models.CharField(max_length=255, default=1)
+    label = models.CharField(max_length=255, default="payment")
     currency = models.CharField(max_length=3)
     can_disburse = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
