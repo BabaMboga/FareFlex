@@ -7,7 +7,8 @@ from django.contrib import messages
 
 # Create your views here.
 def home(request):
-    return render(request, 'fareflex/home.html')
+    wallets = Wallet.objects.all()
+    return render(request, 'fareflex/home.html', {'wallets': wallets})
 
 def about(request):
     return render(request, 'fareflex/about.html')
@@ -30,7 +31,6 @@ def create_wallet(request):
                 wallet_id = response.get('data').get('id')
                 Wallet.objects.create(wallet_id=wallet_id, label=label, currency=currency, can_disburse=can_disburse)
                 messages.success(request, 'Wallet successfully created.')
-                return redirect('fareflex-wallet')
     else:
         form = WalletForm()
         messages.error(request, 'Failed to create wallet.')
