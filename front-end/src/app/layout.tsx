@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body style={{ fontFamily: inter }}>
+      <body className={inter.className}>
         <Container>
           {/* Include Header and Footer components */}
           <Header />
