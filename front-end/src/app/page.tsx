@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import EmailSignIn from "@/components/AuthForms/EmailSignIn";
 
 export default function Home() {
   return (
@@ -11,6 +12,8 @@ export default function Home() {
         
         <div className="max-w-3xl mx-auto">
           {/* Centered container */}
+
+          <EmailSignIn />
           
           <header className="text-center mb-12">
             {/* Header section */}
