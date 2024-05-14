@@ -51,3 +51,12 @@ class User(AbstractUser):
         start_location = models.CharField(max_length=100)
         end_location = models.CharField(max_length=100)
         distance = models.DecimalField(max_digits=10, decimal_places=2)
+        price = models.DecimalField(max_digits=10, decimal_places=2)
+
+    class Vehicle(models.Model):
+        route = models.ForeignKey(Route, on_delete=models.CASCADE)
+        vehicle_id = models.CharField(max_length=20, unique=True)
+        driver_name = models.CharField(max_length=150)
+        conductor_name = models.CharField(max_length=150)
+        capacity = models.IntegerField()
+        status = models.BooleanField(default=True)
