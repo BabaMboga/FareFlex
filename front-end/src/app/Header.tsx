@@ -1,10 +1,34 @@
 // Header.tsx
 import React from 'react';
+import Link from 'next/link';
 
 const Header: React.FC = () => {
     return (
-        <header>
-            <h1>Flexpay Dashboard</h1>
+<header>
+            <nav>
+                <ul>
+                    <li>
+                        <Link href="/">
+                            Home
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/about">
+                            About
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/services">
+                            Services
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/contact">
+                            Contact
+                        </Link>
+                    </li>
+                </ul>
+            </nav>
         </header>
     );
 };
