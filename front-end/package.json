@@ -11,6 +11,7 @@
   "dependencies": {
     "@types/react-bootstrap": "^0.32.36",
     "autoprefixer": "^10.4.19",
+    "bootstrap": "^5.3.3",
     "next": "14.2.3",
     "react": "^18",
     "react-bootstrap": "^2.10.2",
@@ -27,5 +28,3 @@
     "typescript": "^5"
   }
 }
-
-
