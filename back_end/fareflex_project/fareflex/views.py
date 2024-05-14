@@ -34,4 +34,4 @@ def create_wallet(request):
     else:
         form = WalletForm()
         messages.error(request, 'Failed to create wallet.')
-    return render(request, 'fareflex/home.html', {'form': form})
+    return render(request, 'fareflex/wallet.html', {'form': form})
