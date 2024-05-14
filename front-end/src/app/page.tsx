@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="flex min-h-screen">
       {/* Main container with a flex layout */}
-            
+
       <main className="flex-1 p-8">
         {/* Main content area */}
         
@@ -22,7 +22,7 @@ export default function Home() {
             </p>
             <div className="mt-6">
               {/* Image section */}
-              <Image src="/path/to/your/image.jpg" alt="Business Image" width={600} height={400} />
+              <Image src="ian-dooley-DJ7bWa-Gwks-unsplash.jpg" alt="Business Image" width={600} height={400} />
             </div>
           </header>
           
