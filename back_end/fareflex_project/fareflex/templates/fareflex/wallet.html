@@ -6,26 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="content-section">
-        <form action="/submit_wallet_info" method="POST">
-            {% csrf_token %}
-            <label for="wallet_type">Wallet Type:</label><br>
-            <input type="text" id="wallet_type" name="wallet_type"><br>
-            
-            <label for="currency">Currency:</label><br>
-            <input type="text" id="currency" name="currency"><br>
-            
-            <label for="label">Label:</label><br>
-            <input type="text" id="label" name="label"><br>
-            
-            <label for="can_disburse">Can Disburse:</label><br>
-            <select id="can_disburse" name="can_disburse">
-                <option value="True">Yes</option>
-                <option value="False">No</option>
-            </select><br><br>
-            
-            <input type="submit" value="Submit">
-        </form>
-    </div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Wallet</button>
+    </form>
 </body>
 </html>
