@@ -1,5 +1,5 @@
 {
-  "name": "flex-pay",
+  "name": "my-next-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,16 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@types/react-bootstrap": "^0.32.36",
-    "autoprefixer": "^10.4.19",
-    "bootstrap": "^5.3.3",
-    "cssnano": "^7.0.1",
-    "next": "14.2.3",
     "bcryptjs": "^2.4.3",
     "classnames": "^2.5.1",
+    "next": "14.2.3",
     "next-auth": "^4.24.7",
     "react": "^18",
-    "react-bootstrap": "^2.10.2",
     "react-dom": "^18",
     "react-merge-refs": "^2.1.1"
   },
