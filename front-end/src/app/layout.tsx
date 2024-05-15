@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 // Import necessary modules and components
 import React from "react";
 import { Container } from "react-bootstrap";
-import "./globals.css"// Assuming your global styles are in this file
+// import "./globals.css"// Assuming your global styles are in this file
 import Header from "./Header";
 import Footer from "./Footer";
 import Head from "next/head"; // Import Head component for setting <head> tags
