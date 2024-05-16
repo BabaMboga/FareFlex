@@ -25,7 +25,7 @@ export default function Home() {
             </p>
             <div className="mt-6">
               {/* Image section */}
-              <Image src="ian-dooley-DJ7bWa-Gwks-unsplash.jpg" alt="Business Image" width={600} height={400} />
+              <Image src="/ian-dooley-DJ7bWa-Gwks-unsplash.jpg" alt="Business Image" width={600} height={400} />
             </div>
           </header>
           
