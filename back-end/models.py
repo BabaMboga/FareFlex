@@ -10,10 +10,10 @@ class User(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(150), unique=True)
     user_type = db.Column(db.String(20))
-    email = db.Column(db.String(120), unqiue=True)
+    email = db.Column(db.String(120), unique=True)
     password = db.Column(db.String(128))
     phone_number = db.Column(db.String(15))
-    intasend_wallet_id = db.Column(db.String(100), nullable=True, unqiue=True)
+    intasend_wallet_id = db.Column(db.String(100), nullable=True, unique=True)
     wallet = db.relationship('Wallet', backref='user', uselist=False)
 
 class Wallet(db.Model, SerializerMixin):
