@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>fareflex-home</h1>
+    <div>
+        {% if messages %}
+        {% for message in messages %}
+        <div>
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+    {% for wallet in wallets %}
+    <div>
+        <h2>{{ wallet.label }}</h2>
+        <p>Currency: {{ wallet.currency }}</p>
+        <p>Can Disburse: {{ wallet.can_disburse }}</p>
+    </div>
+{% endfor %}
+</body>
+</html>
