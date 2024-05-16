@@ -17,7 +17,7 @@ class User(db.Model, SerializerMixin):
     wallet = db.relationship('Wallet', backref='user', uselist=False)
 
 class Wallet(db.Model, SerializerMixin):
-    id = db.Column(db.Integer, primary_key=[True])
+    id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), unique=True)
     balance = db.Column(db.Numeric(10, 2))
     currnecy = db.Column(db.String(3))
@@ -26,7 +26,7 @@ class Wallet(db.Model, SerializerMixin):
 class Transaction(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    wallet_id = db.Column(db.Integer, db.ForeingKey('wallet'))
+    wallet_id = db.Column(db.Integer, db.ForeignKey('wallet'))
     transaction_type = db.Column(db.String(10))
     amount = db.Column(db.Numeric(10, 2))
     description = db.Column(db.Text)
@@ -48,7 +48,7 @@ class Route(db.Model, SerializerMixin):
 
 class Vehicle(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
-    route_id = db.Column(db.Ineger, db.ForeignKey('route.id'))
+    route_id = db.Column(db.Integer, db.ForeignKey('route.id'))
     vehicle_number = db.Column(db.String(20), unique=True)
     driver_name = db.Column(db.String(150))
     conductor_name = db.Column(db.String(150))
