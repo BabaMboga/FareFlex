@@ -31,8 +31,8 @@ def create_wallet(request):
             can_disburse = form.cleaned_data.get('can_disburse')
             response = service.wallets.create(currency=currency, label=label, can_disburse=can_disburse)
             print(response.get('status'))
-            if response.get('status') == "success":
-                wallet_id = response.get('data').get('id')
+            if response['wallet_id']:
+                wallet_id = response.get('wallet_id')
                 try:
                     Wallet.objects.create(wallet_id=wallet_id, label=label, currency=currency, can_disburse=can_disburse)
                     messages.success(request, 'Wallet successfully created.')
