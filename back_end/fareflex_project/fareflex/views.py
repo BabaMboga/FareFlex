@@ -21,6 +21,7 @@ def about(request):
 
 @csrf_exempt
 def create_wallet(request):
+    current_user = request.user
     print(f"Request method: {request.method}")
     if request.method == 'POST':
         form = WalletForm(request.POST)
@@ -32,9 +33,9 @@ def create_wallet(request):
             response = service.wallets.create(currency=currency, label=label, can_disburse=can_disburse)
             print(response.get('status'))
             if response['wallet_id']:
-                wallet_id = response.get('wallet_id')
+                wallet_id = response['wallet_id']
                 try:
-                    Wallet.objects.create(wallet_id=wallet_id, label=label, currency=currency, can_disburse=can_disburse)
+                    Wallet.objects.create(wallet_id=wallet_id, label=label, currency=currency, can_disburse=can_disburse, user_id=current_user.id)
                     messages.success(request, 'Wallet successfully created.')
                     #print(response)
                 except Exception as e:
