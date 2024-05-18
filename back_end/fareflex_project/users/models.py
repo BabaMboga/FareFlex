@@ -11,6 +11,8 @@ class UserCustomer(models.Model):
     zipcode = models.CharField(max_length=255)
     country = models.CharField(max_length=255)
     customer_id = models.CharField(max_length=255, default="")
+    created_at = models.DateTimeField(default=None)
+    updated_at = models.DateTimeField(default=None)
 
     def __str__(self):
         return self.email

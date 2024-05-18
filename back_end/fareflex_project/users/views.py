@@ -35,12 +35,12 @@ def register(request):
                 "country": form.cleaned_data.get('country')
             }
             customer_response = requests.post(url, json=customer_data, headers=headers)
-            customer_response_data = customer_response.json().du
-            print(customer_response_data)
+            customer_response_data = customer_response.json()
+            print (type(customer_response_data))
             
             # Create a new user in the database using the response data
-            if customer_response_data.get('status') == "success":
-                customer = UserCustomer.objects.create(**customer_response_data.get('data'))
+            if customer_response_data['customer_id']:
+                customer = UserCustomer.objects.create(**customer_response_data)
                 customer.save()
                 messages.success(request, f'Account created for {username}!')
                 return redirect('fareflex-home')
