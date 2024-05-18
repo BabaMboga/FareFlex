@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', user_views.register, name='register'),
     path('pay_fare/', user_views.pay_fare, name='pay_fare'),
+    path('customer/', user_views.pay_fare, name='pay_fare'),
     path('fareflex/',include('fareflex.urls')),
 ]

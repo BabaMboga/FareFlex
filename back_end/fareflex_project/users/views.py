@@ -36,7 +36,6 @@ def register(request):
             }
             customer_response = requests.post(url, json=customer_data, headers=headers)
             customer_response_data = customer_response.json()
-            print (type(customer_response_data))
             
             # Create a new user in the database using the response data
             if customer_response_data['customer_id']:
