@@ -16,7 +16,7 @@ def register(request):
     headers = {
     "accept": "application/json",
     "content-type": "application/json",
-    "Authorization": "ISSecretKey_test_aea56f44-d051-4796-a075-759b2406bb19"
+    "Authorization": "Bearer ISSecretKey_test_aea56f44-d051-4796-a075-759b2406bb19"
 }
 
     if request.method == 'POST':
@@ -35,16 +35,17 @@ def register(request):
                 "country": form.cleaned_data.get('country')
             }
             customer_response = requests.post(url, json=customer_data, headers=headers)
-            print(customer_response.json() )
+            customer_response_data = customer_response.json().du
+            print(customer_response_data)
             
             # Create a new user in the database using the response data
-            if customer_response['customer_id'] == 'success':
-                customer = UserCustomer.objects.create(**customer_response.get('data'))
+            if customer_response_data.get('status') == "success":
+                customer = UserCustomer.objects.create(**customer_response_data.get('data'))
                 customer.save()
                 messages.success(request, f'Account created for {username}!')
                 return redirect('fareflex-home')
             else:
-                messages.error(request, f"Failed to create account: {customer_response.get('message')}")
+                messages.error(request, f"Failed to create account: {customer_response_data.get('message')}")
     else:
         form = UserCreationForm()
     return render(request, 'users/register.html', {'form': form})
