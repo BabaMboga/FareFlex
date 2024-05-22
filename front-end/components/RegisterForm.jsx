@@ -5,8 +5,15 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function RegisterForm() {
-  const [name, setName] = useState("");
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [reference, setReference] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zipcode, setZipcode] = useState("");
+  const [country, setCountry] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
@@ -15,12 +22,16 @@ export default function RegisterForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    console.log("handleSubmit called");
+
     if (!name || !email || !password) {
       setError("All fields are necessary.");
+      console.log("Error: All fields are necessary.");
       return;
     }
 
     try {
+      console.log("Fetching userExists...");
       const resUserExists = await fetch("api/userExists", {
         method: "POST",
         headers: {
@@ -29,36 +40,55 @@ export default function RegisterForm() {
         body: JSON.stringify({ email }),
       });
 
+      console.log("Fetched userExists:", resUserExists);
+
       const { user } = await resUserExists.json();
+
+      console.log("User:", user);
 
       if (user) {
         setError("User already exists.");
+        console.log("Error: User already exists.");
         return;
-      }
+      } 
 
-      const res = await fetch("api/register", {
+      console.log("Fetching register...");
+      const res = await fetch("http://127.0.0.1:8000/register/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name,
+          first_name,
+          last_name,
           email,
+          reference,
+          address,
+          city,
+          state,
+          zipcode,
+          country,
           password,
         }),
       });
 
+      console.log("Fetched register:", res);
+
       if (res.ok) {
         const form = e.target;
+        const data = await res.json()
+        console.log("Registration data:", data);
         form.reset();
         router.push("/");
       } else {
-        console.log("User registration failed.");
+        console.log("Error during registration.");
       }
     } catch (error) {
       console.log("Error during registration: ", error);
     }
   };
+
+ // Add closing parenthesis here
 
   return (
     <div className="grid place-items-center h-screen">
@@ -67,9 +97,39 @@ export default function RegisterForm() {
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
           <input
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setFirstName(e.target.value)}
             type="text"
-            placeholder="Full Name"
+            placeholder="First Name"
+          />
+            <input
+            onChange={(e) => setLastName(e.target.value)}
+            type="text"
+            placeholder="Last Name"
+          />
+          <input
+            onChange={(e) => setAddress(e.target.value)}
+            type="text"
+            placeholder="Address"
+          />
+                    <input
+            onChange={(e) => setCity(e.target.value)}
+            type="text"
+            placeholder="City"
+          />
+                    <input
+            onChange={(e) => setState(e.target.value)}
+            type="text"
+            placeholder="State"
+          />
+                    <input
+            onChange={(e) => setZipcode(e.target.value)}
+            type="text"
+            placeholder="Zipcode"
+          />
+                    <input
+            onChange={(e) => setCountry(e.target.value)}
+            type="text"
+            placeholder="Country"
           />
           <input
             onChange={(e) => setEmail(e.target.value)}

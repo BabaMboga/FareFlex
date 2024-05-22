@@ -27,15 +27,21 @@ def register(request):
         "Authorization": "Bearer ISSecretKey_test_aea56f44-d051-4796-a075-759b2406bb19"
     }
 
+    print(f"Request method: {request.method}")
+
     # Check if the request method is POST
     if request.method == 'POST':
         # Create an instance of the UserCustomerForm class with the data from the request
         form = UserCustomerForm(request.POST)
         
+        print(f"Form valid: {form.is_valid()}")
+        
         # Check if the form is valid
         if form.is_valid():
             # Concatenate the first and last names to create a unique username
             username = form.cleaned_data.get('first_name') + form.cleaned_data.get('last_name')
+            
+            print(f"Form data: {form.cleaned_data}")
             
             # Create a dictionary containing the customer data
             customer_data = {
@@ -50,11 +56,17 @@ def register(request):
                 "country": form.cleaned_data.get('country')
             }
             
+            print(f"Customer data: {customer_data}")
+            
             # Send a POST request to the API endpoint with the customer data
             customer_response = requests.post(url, json=customer_data, headers=headers)
             
+            print(f"Customer response: {customer_response.text}")
+            
             # Parse the JSON response from the API
             customer_response_data = customer_response.json()
+            
+            print(f"Customer response data: {customer_response_data}")
             
             # Check if the API response contains a customer_id
             if customer_response_data['customer_id']:
