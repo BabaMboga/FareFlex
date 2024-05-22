@@ -6,8 +6,8 @@ from .models import Wallet
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 
-TEST_API_TOKEN = ""
-TEST_PUBLISHABLE_KEY = ""
+TEST_API_TOKEN = "ISSecretKey_test_aea56f44-d051-4796-a075-759b2406bb19"
+TEST_PUBLISHABLE_KEY = "ISPubKey_test_693bfb0f-b98c-4069-97e8-7927af92d66f"
 service = APIService(token=TEST_API_TOKEN, publishable_key=TEST_PUBLISHABLE_KEY, test=True)
 
 # Create your views here.

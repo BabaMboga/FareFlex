@@ -6,8 +6,8 @@ from .models import UserCustomer
 from .forms import UserCustomerForm
 import requests
 
-TEST_API_TOKEN = ""
-TEST_PUBLISHABLE_KEY = ""
+TEST_API_TOKEN = "ISSecretKey_test_aea56f44-d051-4796-a075-759b2406bb19"
+TEST_PUBLISHABLE_KEY = "ISPubKey_test_693bfb0f-b98c-4069-97e8-7927af92d66f"
 
 # Create your views here.
 def register(request):

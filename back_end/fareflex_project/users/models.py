@@ -1,6 +1,9 @@
 from django.db import models
 
 class UserCustomer(models.Model):
+    """
+    A UserCustomer represents a customer who is using the application.
+    """
     email = models.EmailField(max_length=255, unique=True)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
