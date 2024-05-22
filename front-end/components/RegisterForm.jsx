@@ -24,12 +24,6 @@ export default function RegisterForm() {
 
     console.log("handleSubmit called");
 
-    if (!name || !email || !password) {
-      setError("All fields are necessary.");
-      console.log("Error: All fields are necessary.");
-      return;
-    }
-
     try {
       console.log("Fetching userExists...");
       const resUserExists = await fetch("api/userExists", {
