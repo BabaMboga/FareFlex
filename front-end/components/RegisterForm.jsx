@@ -24,27 +24,21 @@ export default function RegisterForm() {
 
     console.log("handleSubmit called");
 
-    try {
-      console.log("Fetching userExists...");
-      const resUserExists = await fetch("api/userExists", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
+    //try {
+      //console.log("Fetching userExists...");
+      //const resUserExists = await fetch("api/userExists", {
+       // method: "POST",
+        //headers: {
+        //  "Content-Type": "application/json",
+       // },
+       // body: JSON.stringify({ email }),
+     // });
 
-      console.log("Fetched userExists:", resUserExists);
+      //console.log("Fetched userExists:", resUserExists);
 
-      const { user } = await resUserExists.json();
+      //const { user } = await resUserExists.json();
 
-      console.log("User:", user);
-
-      if (user) {
-        setError("User already exists.");
-        console.log("Error: User already exists.");
-        return;
-      } 
+      
 
       console.log("Fetching register...");
       const res = await fetch("http://127.0.0.1:8000/register/", {
@@ -77,10 +71,10 @@ export default function RegisterForm() {
       } else {
         console.log("Error during registration.");
       }
-    } catch (error) {
-      console.log("Error during registration: ", error);
-    }
-  };
+    } //catch (error) {
+     // console.log("Error during registration: ", error);
+    //}
+ // };
 
  // Add closing parenthesis here
 
