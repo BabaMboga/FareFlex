@@ -24,19 +24,19 @@ export default function RegisterForm() {
 
     console.log("handleSubmit called");
 
-    //try {
-      //console.log("Fetching userExists...");
-      //const resUserExists = await fetch("api/userExists", {
-       // method: "POST",
-        //headers: {
-        //  "Content-Type": "application/json",
-       // },
-       // body: JSON.stringify({ email }),
-     // });
+    try {
+      console.log("Fetching userExists...");
+      const resUserExists = await fetch("api/userExists", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
 
-      //console.log("Fetched userExists:", resUserExists);
+      console.log("Fetched userExists:", resUserExists);
 
-      //const { user } = await resUserExists.json();
+      const { user } = await resUserExists.json();
 
       
 
@@ -45,6 +45,8 @@ export default function RegisterForm() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "accept": "application/json",
+          "Authorization": "Bearer ISSecretKey_test_aea56f44-d051-4796-a075-759b2406bb19"
         },
         body: JSON.stringify({
           first_name,
@@ -71,10 +73,10 @@ export default function RegisterForm() {
       } else {
         console.log("Error during registration.");
       }
-    } //catch (error) {
-     // console.log("Error during registration: ", error);
-    //}
- // };
+    } catch (error) {
+      console.log("Error during registration: ", error);
+    }
+  };
 
  // Add closing parenthesis here
 
