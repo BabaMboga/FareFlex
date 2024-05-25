@@ -85,7 +85,7 @@ export default function RegisterForm() {
       <div className="shadow-lg p-5 rounded-lg border-t-4 border-green-400">
         <h1 className="text-xl font-bold my-4">Register</h1>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3" action="http://127.0.0.1:8000/register/" method="POST">
           <input
             onChange={(e) => setFirstName(e.target.value)}
             type="text"
@@ -95,6 +95,11 @@ export default function RegisterForm() {
             onChange={(e) => setLastName(e.target.value)}
             type="text"
             placeholder="Last Name"
+          />
+          <input
+            onChange={(e) => setReference(e.target.value)}
+            type="text"
+            placeholder="Reference"
           />
           <input
             onChange={(e) => setAddress(e.target.value)}
