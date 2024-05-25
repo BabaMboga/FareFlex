@@ -74,7 +74,7 @@ def register(request):
     
     # Render the register.html template with the form data
     # return render(request, 'users/register.html', {'form': form})
-    print(f"Customer response data: {customer_response_data}")
+    print(f"Customer response data: {JsonResponse(customer_response_data)}")
     return JsonResponse(customer_response_data)
 
 def pay_fare(request):
